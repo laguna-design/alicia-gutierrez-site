@@ -1,0 +1,1647 @@
+@charset "UTF-8";
+/*General*/
+html {
+  font-size: 8px;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+@media screen and (min-width: 992px) {
+  body {
+    cursor: none;
+  }
+}
+
+* {
+  color: #F0D4C0;
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 12rem;
+}
+
+h2 {
+  font-size: 5rem;
+}
+
+h3 {
+  font-size: 2.75rem;
+  font-weight: 600;
+  font-family: "Lexend Exa", sans-serif;
+  text-transform: uppercase;
+  margin: 0;
+}
+@media only screen and (min-width: 630px) {
+  h3 {
+    font-size: 3rem;
+    text-transform: none;
+  }
+}
+
+h6 {
+  font-family: "Lexend Exa", sans-serif;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+p {
+  font-size: 2rem;
+  margin: 0;
+}
+
+a,
+button {
+  cursor: none;
+}
+
+dt, dd, dd {
+  font-size: 1.5rem;
+  font-family: "Lexend Exa", sans-serif;
+}
+
+dd {
+  margin: 0;
+}
+
+button {
+  background-color: transparent;
+  border-color: #F0D4C0;
+  border-style: solid;
+}
+
+.laguna__main {
+  display: flex;
+  flex-direction: column;
+  padding: 0 4rem;
+  margin-bottom: 12rem;
+  margin-top: calc(4rem + 20px);
+}
+@media screen and (min-width: 992px) {
+  .laguna__main {
+    padding: 0 6rem;
+  }
+}
+
+::selection {
+  color: #F0D4C0;
+}
+
+[data-theme=light] ::selection {
+  background-color: #32142d;
+}
+
+[data-theme=dark] ::selection {
+  background-color: #DD1D1D;
+}
+
+/*animaciones*/
+@keyframes animatedBG {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -5%);
+  }
+  20% {
+    transform: translate(-10%, 5%);
+  }
+  30% {
+    transform: translate(5%, -10%);
+  }
+  40% {
+    transform: translate(-5%, 15%);
+  }
+  50% {
+    transform: translate(-10%, 5%);
+  }
+  60% {
+    transform: translate(15%, 0);
+  }
+  70% {
+    transform: translate(0, 10%);
+  }
+  80% {
+    transform: translate(-15%, 0);
+  }
+  90% {
+    transform: translate(10%, 5%);
+  }
+  to {
+    transform: translate(5%, 0);
+  }
+}
+@keyframes arrowdown {
+  0% {
+    transform: translate(0, 0);
+    transform: opacity(1);
+  }
+  35% {
+    transform: translate(0, 0);
+    transform: opacity(1);
+  }
+  55% {
+    transform: translate(0px, 200px);
+    transform: opacity(0);
+  }
+  56% {
+    transform: translate(-200px, 200px);
+    transform: opacity(0);
+  }
+  57% {
+    transform: translate(-200px, -200px);
+    transform: opacity(0);
+  }
+  58% {
+    transform: translate(0px, -200px);
+    transform: opacity(0);
+  }
+  78% {
+    transform: translate(0, 0);
+    transform: opacity(1);
+  }
+  to {
+    transform: translate(0, 0);
+    transform: opacity(1);
+  }
+}
+@keyframes arrowback {
+  0% {
+    transform: translate(0, 0);
+    transform: opacity(1);
+  }
+  25% {
+    transform: translate(0, 0);
+    transform: opacity(1);
+  }
+  47% {
+    transform: translate(-200%, 0);
+    transform: opacity(0);
+  }
+  48% {
+    transform: translate(-200%, -200%);
+    transform: opacity(0);
+  }
+  49% {
+    transform: translate(0%, -200%);
+    transform: opacity(0);
+  }
+  50% {
+    transform: translate(200%, 0%);
+    transform: opacity(0);
+  }
+  75% {
+    transform: translate(0, 0);
+    transform: opacity(1);
+  }
+  to {
+    transform: translate(0, 0);
+    transform: opacity(1);
+  }
+}
+/*Moon movement*/
+@-webkit-keyframes moonmovement {
+  0% {
+    -webkit-transform: translateX(-500px);
+    transform: translateX(-500px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@keyframes moonmovement {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-500px);
+    transform: translateX(-500px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+@keyframes animatedOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+body {
+  background-color: var(--laguna--theme-color);
+}
+
+#laguna__animatedBG {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url(../../th/laguna--bg--noise.png);
+  animation: animatedBG 5s steps(4) infinite;
+  pointer-events: none;
+  opacity: 0.2;
+  z-index: 9999;
+}
+
+.laguna__singlepage #laguna__animatedBG {
+  z-index: -1;
+}
+
+/* Cursor hover behavior */
+@media only screen and (min-width: 630px) and (pointer: fine) {
+  body:hover .lagunacustom-cursor {
+    opacity: 1;
+  }
+}
+
+/* Cursor styles */
+body .lagunacustom-cursor {
+  display: none;
+}
+@media only screen and (min-width: 630px) and (pointer: fine) {
+  body .lagunacustom-cursor {
+    display: initial;
+    width: 8px;
+    height: 8px;
+    border-radius: 1rem;
+    background-color: #EFD1C3;
+    position: fixed;
+    top: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 500ms;
+    z-index: 99999999;
+  }
+  body .lagunacustom-cursor::after {
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    border: 1px solid #EFD1C3;
+    width: 31px;
+    height: 31px;
+    z-index: 9999999;
+  }
+  body .lagunacustom-cursor.zoom {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 100%;
+    background-color: #F0D4C0;
+    -webkit-transition: width 0.4s ease-in-out;
+    -moz-transition: width 0.4s ease-in-out;
+    -o-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+  }
+  body .lagunacustom-cursor.zoom::after {
+    background-color: rgba(240, 212, 192, 0.25);
+    border: 0;
+    mix-blend-mode: difference;
+    transform: scale(3);
+    transition: transform 0.3s ease-in-out;
+  }
+}
+
+/*Scrollbar*/
+/* Style the scrollbar track (the part that the thumb moves within) */
+::-webkit-scrollbar {
+  width: 1rem; /* Width of the scrollbar */
+  height: 1rem; /* Height of the horizontal scrollbar */
+}
+
+/* Style the scrollbar track */
+::-webkit-scrollbar-track {
+  background: transparent; /* Track color */
+}
+
+/* Style the scrollbar thumb (the draggable part of the scrollbar) */
+::-webkit-scrollbar-thumb {
+  background: #F0D4C0; /* Thumb color */
+  border-radius: 3rem;
+}
+
+/* Style the scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #F0D4C0;
+  width: 2rem; /* Thumb color on hover */
+}
+
+/*-----------firefox------------*/
+/* Control the width of the scrollbar */
+/*html {
+    scrollbar-width: thin;
+}*/
+/* Control the color of the scrollbar thumb and track */
+/*html {
+    scrollbar-color: rgba($laguna-white, 0.25) rgba($laguna-white, 0.25); 
+}*/
+[data-theme=light] {
+  --laguna--theme-color: #DD1D1D;
+}
+
+[data-theme=dark] {
+  --laguna--theme-color: #32142d;
+}
+
+button.laguna__button__light {
+  background-color: var(--laguna--theme-color);
+  color: #F0D4C0;
+  border: 2px solid;
+  font-size: 2rem;
+  letter-spacing: 0.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 2rem 3rem;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+button.laguna__button__light:hover {
+  background-color: #F0D4C0;
+  color: var(--laguna--theme-color);
+}
+
+#laguna__projects__toggleButton {
+  border-radius: 60%;
+}
+
+#scrollUpBtn {
+  background-color: var(--laguna--theme-color);
+  display: none;
+  position: fixed;
+  font-size: 3rem;
+  bottom: 2rem;
+  right: -3rem;
+  z-index: 99;
+  outline: none;
+  border-radius: 100%;
+  color: #F0D4C0;
+  border: 2px solid #F0D4C0;
+  width: 6rem;
+  height: 6rem;
+  text-align: center;
+  line-height: 2.5rem;
+  padding-bottom: 6px;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+@media only screen and (min-width: 630px) and (pointer: fine) {
+  #scrollUpBtn:hover {
+    background-color: #F0D4C0;
+  }
+  #scrollUpBtn:hover path {
+    stroke: var(--laguna--theme-color);
+  }
+}
+#scrollUpBtn:active {
+  background-color: #F0D4C0;
+}
+#scrollUpBtn:active path {
+  stroke: var(--laguna--theme-color);
+}
+
+.laguna__arrowup_show {
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.7rem;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+body.laguna__singlepage #scrollUpBtn {
+  bottom: 13rem;
+}
+
+#laguna_light_mode--btn *,
+#laguna_dark_mode--btn * {
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+#laguna_dark_mode--btn--moon {
+  fill: rgba(240, 212, 192, 0);
+  stroke: #F0D4C0;
+  stroke-width: 1.9px;
+}
+
+[data-theme=dark] #laguna_light_mode--btn #laguna_light_mode--btn--sun {
+  fill: rgba(240, 212, 192, 0);
+}
+[data-theme=dark] #laguna_light_mode--btn:hover #laguna_light_mode--btn--sun {
+  fill: #f0d4c0;
+}
+[data-theme=dark] #laguna_dark_mode--btn #laguna_dark_mode--btn--moon {
+  fill: #f0d4c0;
+}
+
+[data-theme=light] #laguna_light_mode--btn #laguna_light_mode--btn--sun {
+  fill: #f0d4c0;
+}
+[data-theme=light] #laguna_dark_mode--btn #laguna_dark_mode--btn--moon {
+  fill: rgba(240, 212, 192, 0);
+}
+[data-theme=light] #laguna_dark_mode--btn:hover #laguna_dark_mode--btn--moon {
+  fill: #f0d4c0;
+}
+
+#laguna_design--btn--default {
+  width: 60%;
+  height: unset;
+}
+@media only screen and (min-width: 630px) {
+  #laguna_design--btn--default {
+    width: unset;
+    height: 100%;
+    max-height: 20rem;
+  }
+}
+#laguna_design--btn--default:hover .laguna_design--btn--letter {
+  fill: rgba(240, 212, 192, 0);
+  stroke: #F0D4C0;
+  stroke-width: 2px;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+#laguna_illustration--btn--default {
+  width: 80%;
+  height: unset;
+}
+@media only screen and (min-width: 630px) {
+  #laguna_illustration--btn--default {
+    width: unset;
+    height: 100%;
+    max-height: 20rem;
+  }
+}
+#laguna_illustration--btn--default:hover .laguna_illustration--btn--letter {
+  fill: rgba(240, 212, 192, 0);
+  stroke: #F0D4C0;
+  stroke-width: 2px;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+#laguna__prevProject_button {
+  left: 1.5rem;
+}
+@media screen and (min-width: 992px) {
+  #laguna__prevProject_button {
+    left: 3rem;
+    padding-right: 24px;
+  }
+  #laguna__prevProject_button:hover {
+    padding-right: 16px;
+  }
+}
+
+#laguna__nextProject_button {
+  right: 1.5rem;
+}
+@media screen and (min-width: 992px) {
+  #laguna__nextProject_button {
+    right: 3rem;
+    padding-left: 24px;
+  }
+  #laguna__nextProject_button:hover {
+    padding-left: 16px;
+  }
+}
+
+.laguna__navProject_button {
+  top: calc(50vh - 8rem);
+  background-color: var(--laguna--theme-color);
+  font-size: 2.25rem;
+  font-weight: 500;
+  position: fixed;
+  border: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 5rem;
+  border: 2px solid;
+  padding: 8px 16px;
+  border-radius: 20rem;
+  overflow: hidden;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+@media screen and (min-width: 992px) {
+  .laguna__navProject_button {
+    height: auto;
+    width: 7.5rem;
+  }
+  .laguna__navProject_button:hover {
+    width: auto;
+  }
+}
+.laguna__navProject_button > span {
+  white-space: nowrap;
+  display: none;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+@media screen and (min-width: 992px) {
+  .laguna__navProject_button > span {
+    display: initial;
+    width: 0;
+    margin-left: -16px;
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+.laguna__navProject_button:hover {
+  /* falta poor hacer la animación de la otra flecha, lo dejo pendiente y las dos flechas sin animar
+  #arrow-back{
+      animation: arrowback 1s steps(24) infinite;
+  }*/
+}
+.laguna__navProject_button:hover svg {
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+.laguna__navProject_button:hover > span {
+  width: auto;
+  opacity: 1;
+  margin-left: 0;
+  visibility: initial;
+}
+.laguna__navProject_button .laguna__goback_button_arrow {
+  overflow: hidden;
+  width: 2.25rem;
+  display: inline-table;
+  align-items: center;
+  padding-top: 0.75rem;
+}
+
+.laguna__bigTitle {
+  background-color: #F0D4C0;
+}
+@media only screen and (min-width: 630px) {
+  .laguna__bigTitle {
+    width: 100%;
+  }
+}
+
+.laguna__bigTitle__line {
+  background-color: #F0D4C0;
+  width: 100%;
+}
+
+.laguna__lines_hor,
+.laguna__lines_ver {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+@media only screen and (min-width: 630px) {
+  .laguna__lines_hor {
+    flex-direction: row;
+  }
+}
+.laguna__lines_hor .laguna__bigTitle__line:nth-child(2) {
+  height: 1.5rem;
+}
+@media only screen and (min-width: 630px) {
+  .laguna__lines_hor .laguna__bigTitle__line:nth-child(2) {
+    height: unset;
+    width: 3rem;
+  }
+}
+.laguna__lines_hor .laguna__bigTitle__line:nth-child(3) {
+  height: 1rem;
+}
+@media only screen and (min-width: 630px) {
+  .laguna__lines_hor .laguna__bigTitle__line:nth-child(3) {
+    height: unset;
+    width: 2rem;
+  }
+}
+.laguna__lines_hor .laguna__bigTitle__line:nth-child(4) {
+  height: 0.5rem;
+}
+@media only screen and (min-width: 630px) {
+  .laguna__lines_hor .laguna__bigTitle__line:nth-child(4) {
+    height: unset;
+    width: 1rem;
+  }
+}
+
+.laguna__lines_ver .laguna__bigTitle__line:nth-child(2) {
+  height: 1.5rem;
+}
+.laguna__lines_ver .laguna__bigTitle__line:nth-child(3) {
+  height: 1rem;
+}
+.laguna__lines_ver .laguna__bigTitle__line:nth-child(4) {
+  height: 0.5rem;
+}
+
+@media only screen and (min-width: 630px) {
+  .laguna__bigTitle__svg {
+    width: 50%;
+    max-width: 60rem;
+  }
+}
+.laguna__bigTitle__svg .laguna__bigTitle__svg--character {
+  fill: var(--laguna--theme-color);
+  stroke-width: 0px;
+}
+
+/*overlay*/
+.laguna__overlay_BG {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(25, 25, 25, 0.25);
+  justify-content: center;
+  align-items: flex-end;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+.laguna__overlay_BG.show {
+  visibility: visible;
+  z-index: 999;
+  opacity: 1;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+.laguna__overlay_BG.show .laguna__overlay {
+  transform: translateY(0);
+  opacity: 1;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.laguna__overlay_BG .laguna__overlay {
+  background-color: var(--laguna--theme-color);
+  position: fixed;
+  transform: translateY(100%);
+  transition: transform 0.75s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: 0;
+  width: 100%;
+  height: calc(100% - 12rem);
+  left: 0;
+  bottom: 0;
+}
+@media screen and (min-width: 992px) {
+  .laguna__overlay_BG .laguna__overlay {
+    width: calc(100% - 6rem);
+    left: 3rem;
+  }
+}
+.laguna__overlay_BG #laguna__overlay_info {
+  width: 600px;
+  max-width: 100vw;
+  height: auto;
+  left: calc(50vw - 300px);
+  bottom: unset;
+  top: calc(50vh - 160px);
+  overflow-y: initial;
+}
+.laguna__overlay_BG #laguna__overlay_info h3 {
+  color: var(--laguna--theme-color);
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+.laguna__overlay_BG #laguna__overlay_info .laguna__Projects__single__details__client {
+  font-family: "Lexend Exa", sans-serif;
+  font-weight: 500;
+}
+.laguna__overlay_BG #laguna__overlay_info .laguna__Projects__single__details__text {
+  padding: 4rem;
+  flex-direction: column;
+  gap: 2rem;
+}
+.laguna__overlay_BG #laguna__overlay_info .laguna__Projects__single__details__text .laguna__Projects__single__details__text__header {
+  display: flex;
+  justify-content: space-between;
+}
+@media screen and (min-width: 992px) {
+  .laguna__overlay_BG #laguna__overlay_info .laguna__projects__single__details__prototypes {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media only screen and (min-width: 630px) {
+  .laguna__overlay_BG #laguna__overlay_info .laguna__projects__single__details__prototypes h6 {
+    white-space: nowrap;
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 400;
+  }
+}
+.laguna__overlay_BG #laguna__overlay_info .laguna__projects__single__details__prototypes .laguna__projects__single__details__prototypes_links {
+  display: flex;
+  gap: 4rem;
+  flex-direction: row;
+}
+.laguna__overlay_BG #laguna__overlay_info .laguna__projects__single__details__prototypes .laguna__projects__single__details__prototypes_links > dl {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+}
+.laguna__overlay_BG #laguna__overlay_info .laguna__projects__single__details__prototypes .laguna__projects__single__details__prototypes_links > dl > dt {
+  margin-right: 1rem;
+}
+.laguna__overlay_BG #laguna__overlay_info .laguna__projects__single__details__prototypes .laguna__projects__single__details__prototypes_links > dl > dd {
+  font-size: 1.7rem;
+  padding: 1.3rem 1.3rem 1rem 0rem;
+}
+
+/*Overlay big title*/
+.laguna__bigTitle {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 2rem;
+}
+@media only screen and (min-width: 630px) {
+  .laguna__bigTitle {
+    padding: 2rem 4rem;
+  }
+}
+.laguna__bigTitle > .laguna__close_btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  color: var(--laguna--theme-color);
+  gap: 0;
+  rotate: -90deg;
+  text-transform: uppercase;
+  border: 0;
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: 800;
+  overflow: hidden;
+}
+.laguna__bigTitle > .laguna__close_btn > .laguna__close_btn_arrow {
+  rotate: 90deg;
+  max-height: 3rem;
+}
+.laguna__bigTitle > .laguna__close_btn > .laguna__close_btn_arrow > path {
+  stroke: var(--laguna--theme-color);
+}
+.laguna__bigTitle > .laguna__close_btn:hover > .laguna__close_btn_arrow {
+  animation: arrowdown 2s steps(48) infinite;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+/*Header*/
+header.laguna__header {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 100vw;
+}
+header.laguna__header .laguna__header-nav {
+  background-color: var(--laguna--theme-color);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  border: 2px solid;
+  border-radius: 20rem;
+  top: 4rem;
+  position: fixed;
+  z-index: 9999;
+  height: 5rem;
+}
+header.laguna__header ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+header.laguna__header ul.laguna__submenu {
+  position: fixed;
+  top: 11rem;
+  flex-wrap: wrap;
+  background-color: var(--laguna--theme-color);
+  padding: 1rem 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+header.laguna__header ul.laguna__submenu_show {
+  opacity: 1;
+  pointer-events: initial;
+  z-index: 9999;
+}
+header.laguna__header ul li {
+  list-style: none;
+  font-size: 2rem;
+}
+header.laguna__header ul li div#contact-link > div {
+  font-size: 2rem;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+header.laguna__header ul li div#contact-link:hover > div {
+  transform: skew(10deg, -8deg);
+  opacity: 0.8;
+}
+@media only screen and (min-width: 630px) and (pointer: fine) {
+  header.laguna__header ul li a:hover div {
+    transform: skew(10deg, -8deg);
+    opacity: 0.8;
+  }
+  header.laguna__header ul li a > div {
+    font-size: 2rem;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+  }
+}
+header.laguna__header ul li a, header.laguna__header ul li div#contact-link {
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+header.laguna__header ul li div.laguna__selected {
+  border-bottom: 1px solid;
+}
+
+@media screen and (min-width: 992px) {
+  body.laguna__home header.laguna__header .laguna__header-nav {
+    -webkit-animation: animatedOpacity 0.4s ease-in-out 0.5s both;
+    animation: animatedOpacity 0.4s ease-in-out 0.5s both;
+  }
+}
+
+/*heroZone section*/
+@media only screen and (min-width: 630px) {
+  .laguna__heroZone {
+    margin-bottom: 10rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .laguna__heroZone {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 96vh;
+    gap: 2rem;
+  }
+}
+.laguna__heroZone #laguna--moon--full,
+.laguna__heroZone #laguna--moon--half-01,
+.laguna__heroZone #laguna--moon--half-02,
+.laguna__heroZone #laguna--moon--half-03 {
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+@media screen and (min-width: 992px) {
+  .laguna__heroZone #laguna--moon--full {
+    -webkit-animation: moonmovement 0.75s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.25s both;
+    animation: moonmovement 0.75s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.25s both;
+  }
+}
+@media screen and (min-width: 992px) {
+  .laguna__heroZone #laguna--moon--half-01 {
+    -webkit-animation: moonmovement 1.25s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.25s both;
+    animation: moonmovement 1.25s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.25s both;
+  }
+}
+@media screen and (min-width: 992px) {
+  .laguna__heroZone #laguna--moon--half-02 {
+    -webkit-animation: moonmovement 1.5s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.25s both;
+    animation: moonmovement 1.5s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.25s both;
+  }
+}
+@media screen and (min-width: 992px) {
+  .laguna__heroZone #laguna--moon--half-03 {
+    -webkit-animation: moonmovement 1.75s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.35s both;
+    animation: moonmovement 1.75s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.35s both;
+  }
+}
+@media screen and (min-width: 992px) {
+  .laguna__heroZone #laguna_design--btn--default {
+    -webkit-animation: moonmovement 1s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.5s both;
+    animation: moonmovement 1s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.5s both;
+  }
+}
+@media screen and (min-width: 992px) {
+  .laguna__heroZone #laguna_illustration--btn--default {
+    -webkit-animation: moonmovement 1s cubic-bezier(0.445, 0.05, 0.55, 0.95) 1s both;
+    animation: moonmovement 1s cubic-bezier(0.445, 0.05, 0.55, 0.95) 1s both;
+  }
+}
+.laguna__heroZone .laguna__heroZone-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 94vh;
+  padding: 1rem 0;
+  gap: 1.5rem;
+}
+@media only screen and (min-width: 630px) {
+  .laguna__heroZone .laguna__heroZone-main {
+    padding: 0;
+  }
+}
+.laguna__heroZone .laguna__heroZone-main #laguna__heroZone__myself__mobile {
+  display: initial;
+}
+@media screen and (min-width: 992px) {
+  .laguna__heroZone .laguna__heroZone-main #laguna__heroZone__myself__mobile {
+    display: none;
+  }
+}
+.laguna__heroZone .laguna__heroZone-main #laguna--logo {
+  width: 40%;
+}
+@media screen and (min-width: 992px) {
+  .laguna__heroZone .laguna__heroZone-main #laguna--logo {
+    -webkit-animation: animatedOpacity 0.75s ease-in-out 1s both;
+    animation: animatedOpacity 0.75s ease-in-out 1s both;
+  }
+}
+@media only screen and (min-width: 630px) {
+  .laguna__heroZone .laguna__heroZone-main #laguna--logo {
+    width: 16%;
+    max-width: 25rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .laguna__heroZone .laguna__heroZone-main .laguna__heroZone__myself {
+    -webkit-animation: animatedOpacity 0.5s ease-in-out 1s both;
+    animation: animatedOpacity 0.5s ease-in-out 1s both;
+  }
+}
+.laguna__heroZone .laguna__heroZone-main .laguna__heroZone__myself > p {
+  font-family: "Lexend Giga", sans-serif;
+  font-size: 1.75rem;
+  line-height: 135%;
+}
+@media only screen and (min-width: 630px) {
+  .laguna__heroZone .laguna__heroZone-main .laguna__heroZone__myself > p {
+    font-size: 2.25rem;
+  }
+}
+.laguna__heroZone .laguna__heroZone-main .laguna__heroZone__myself > p > b {
+  font-family: "Lexend Giga", sans-serif;
+  font-size: 1.75rem;
+  line-height: 135%;
+}
+@media only screen and (min-width: 630px) {
+  .laguna__heroZone .laguna__heroZone-main .laguna__heroZone__myself > p > b {
+    font-size: 2.25rem;
+  }
+}
+
+.laguna__heroZone__nav-and-moon {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2rem;
+}
+@media screen and (min-width: 992px) {
+  .laguna__heroZone__nav-and-moon {
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+  }
+}
+
+.laguna__heroZone__myself {
+  width: 100%;
+}
+@media only screen and (min-width: 630px) {
+  .laguna__heroZone__myself {
+    width: 66%;
+  }
+}
+
+#laguna__heroZone__myself__desktop {
+  display: none;
+}
+@media screen and (min-width: 992px) {
+  #laguna__heroZone__myself__desktop {
+    display: initial;
+  }
+}
+
+.laguna_design--btn--letter,
+.laguna_illustration--btn--letter,
+.laguna--logo--text-letter,
+.laguna--logo--moon-shape {
+  fill: #F0D4C0;
+  stroke-width: 0px;
+}
+
+#laguna--moon--half-01 {
+  height: 100%;
+}
+
+[id^=laguna--moon--] .laguna--moon--shape {
+  fill: #F0D4C0;
+  fill-rule: evenodd;
+  stroke-width: 0px;
+}
+
+@media screen and (min-width: 992px) {
+  .laguna__design_and_illustration__contanier {
+    width: 66.67%;
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+.laguna__my--info {
+  padding: 6rem 0;
+  flex-direction: column;
+  gap: 5rem;
+  -webkit-animation: animatedOpacity 0.4s ease-in-out 0.5s both;
+  animation: animatedOpacity 0.4s ease-in-out 0.5s both;
+}
+@media only screen and (min-width: 630px) {
+  .laguna__my--info {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+  }
+}
+@media screen and (min-width: 630px) and (max-width: 991px) {
+  .laguna__my--info {
+    flex-wrap: wrap;
+  }
+}
+
+#laguna__my--info__currentlyAndPreviously,
+.laguna__my--info__module,
+.laguna__my--info dl {
+  display: flex;
+  flex-direction: column;
+}
+
+#laguna__my--info__currentlyAndPreviously {
+  gap: 5rem;
+}
+
+.laguna__my--info__module {
+  gap: 2rem;
+}
+
+.laguna__my--info dl {
+  gap: 1rem;
+}
+
+.laguna__my--info h6 {
+  font-weight: 800;
+}
+
+.laguna__my--info dl,
+.laguna__my--info a {
+  font-family: "Lexend Exa", sans-serif;
+  font-size: 1.5rem;
+  margin: 0;
+  text-decoration: none;
+}
+
+.laguna__my--info > .laguna__my--info__module,
+.laguna__my--info > .laguna__my--info__col {
+  margin-bottom: 5rem;
+}
+@media only screen and (min-width: 630px) {
+  .laguna__my--info > .laguna__my--info__module,
+  .laguna__my--info > .laguna__my--info__col {
+    margin-bottom: 0;
+  }
+}
+
+.laguna__selectedProjects {
+  margin-bottom: 6rem;
+  -webkit-animation: animatedOpacity 0.4s ease-in-out 0.25s both;
+  animation: animatedOpacity 0.4s ease-in-out 0.25s both;
+}
+.laguna__selectedProjects .laguna__bigTitle {
+  padding: 2rem;
+}
+@media only screen and (min-width: 630px) {
+  .laguna__selectedProjects {
+    margin-bottom: 13rem;
+  }
+}
+
+ul.laguna__Projects__list {
+  margin: 0;
+  padding: 0;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+@media only screen and (min-width: 630px) and (pointer: fine) {
+  ul.laguna__Projects__list li {
+    cursor: pointer;
+    position: relative;
+  }
+}
+ul.laguna__Projects__list li.laguna__Projects__single {
+  border-bottom: 1px solid;
+  list-style: none;
+  transition: padding 500ms ease-in-out;
+}
+@media only screen and (min-width: 630px) {
+  ul.laguna__Projects__list li.laguna__Projects__single {
+    list-style: none;
+  }
+  ul.laguna__Projects__list li.laguna__Projects__single:hover {
+    background-color: #F0D4C0;
+    padding: 0 4rem;
+  }
+  ul.laguna__Projects__list li.laguna__Projects__single:hover > a > h3 {
+    color: var(--laguna--theme-color);
+  }
+  ul.laguna__Projects__list li.laguna__Projects__single:hover > a > div.laguna__Projects__single__details > div.laguna__Projects__single__details__text > span.laguna__Projects__single__details__client,
+  ul.laguna__Projects__list li.laguna__Projects__single:hover > a > div.laguna__Projects__single__details > div.laguna__Projects__single__details__text > span.laguna__Projects__single__details__category {
+    color: var(--laguna--theme-color);
+  }
+}
+ul.laguna__Projects__list li.laguna__Projects__single a {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-decoration: none;
+  gap: 3rem;
+  padding: 3rem 0;
+}
+@media only screen and (min-width: 630px) {
+  ul.laguna__Projects__list li.laguna__Projects__single a {
+    font-size: 1.75rem;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
+}
+@media screen and (min-width: 630px) and (max-width: 991px) {
+  ul.laguna__Projects__list li.laguna__Projects__single a {
+    flex-direction: column;
+    align-items: start;
+  }
+}
+@media screen and (min-width: 630px) and (max-width: 991px) {
+  ul.laguna__Projects__list li.laguna__Projects__single a > .laguna__Projects__single__details {
+    width: 100%;
+  }
+}
+ul.laguna__Projects__list li.laguna__Projects__external_link h3 {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+ul.laguna__Projects__list li.laguna__Projects__external_link h3 svg {
+  width: 3rem;
+}
+ul.laguna__Projects__list li.laguna__Projects__external_link h3 svg .laguna--external-link {
+  fill: none;
+  stroke: #F0D4C0;
+  stroke-miterlimit: 10;
+  stroke-width: 4.3px;
+}
+ul.laguna__Projects__list li.laguna__Projects__external_link:hover h3 svg .laguna--external-link {
+  stroke: var(--laguna--theme-color);
+}
+
+@media only screen and (min-width: 630px) and (pointer: fine) {
+  ul.laguna__Projects__list li.laguna__Projects__single:hover > a,
+  ul.laguna__Projects__list li.laguna__Projects__single:hover > a > h3,
+  ul.laguna__Projects__list li.laguna__Projects__single:hover > a > div.laguna__Projects__single__details > div.laguna__Projects__single__details__text > span.laguna__Projects__single__details__client,
+  ul.laguna__Projects__list li.laguna__Projects__single:hover > a > div.laguna__Projects__single__details > div.laguna__Projects__single__details__text > span.laguna__Projects__single__details__category {
+    color: var(--laguna--theme-color);
+  }
+}
+
+.laguna__Projects__single__details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 3rem;
+}
+@media only screen and (min-width: 630px) {
+  .laguna__Projects__single__details {
+    width: 35%;
+    min-width: 25rem;
+    flex-direction: column;
+  }
+}
+
+.laguna__Projects__single__details .laguna__Projects__single__details__client,
+.laguna__Projects__single__details .laguna__Projects__single__details__category {
+  text-transform: uppercase;
+  font-size: 1.75rem;
+}
+
+.laguna__Projects__single__details .laguna__Projects__single__details__client {
+  font-weight: 400;
+  letter-spacing: 0.4rem;
+}
+.laguna__Projects__single__details .laguna__Projects__single__details__category {
+  font-weight: 600;
+  text-align: right;
+}
+
+@media only screen and (min-width: 630px) and (pointer: fine) {
+  .laguna__thumbnail__hoverImage {
+    position: absolute;
+    pointer-events: none;
+    display: none;
+    z-index: 1000;
+    transition: transform 0.1s;
+  }
+}
+.laguna__thumbnail__hoverImage img {
+  display: none;
+}
+@media only screen and (min-width: 630px) and (pointer: fine) {
+  .laguna__thumbnail__hoverImage img {
+    display: block;
+    max-width: 40rem;
+    margin-top: -50%;
+  }
+}
+
+.laguna__projects__single--hidden {
+  display: none;
+}
+
+/*Projects-Thumbnails*/
+@media only screen and (min-width: 630px) {
+  .laguna__projects__single__thumnbanil {
+    position: absolute;
+  }
+}
+
+.laguna__projects__thumbnnail__mobile {
+  width: 100%;
+}
+@media only screen and (min-width: 630px) {
+  .laguna__projects__thumbnnail__mobile {
+    display: none;
+  }
+}
+
+.laguna__Projects__single__details__text {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+@media only screen and (min-width: 630px) {
+  .laguna__Projects__single__details__text {
+    justify-content: space-between;
+  }
+}
+
+/*Tuhumbnail with external link*/
+/*ul.laguna__Projects__list{
+    li.laguna__Projects__single{
+        a{
+            &[href*="instagram"]{
+                h3{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: flex-start;
+                    &::after{
+                        content: url('../../th/laguna__arrow_ext.svg');
+                        width: 4rem;
+                        margin-left: 1rem;
+                    }
+
+                }
+                &:hover::after {
+                    background-color: red;
+                }
+            }
+        }
+    }
+}*/
+/*big title in overlay*/
+.laguna__overlay > .laguna__Projects > .laguna__Projects__list {
+  padding: 1rem 4rem;
+}
+
+/*Footer*/
+footer.laguna__footer {
+  -webkit-animation: animatedOpacity 0.4s ease-in-out 0.25s both;
+  animation: animatedOpacity 0.4s ease-in-out 0.25s both;
+}
+footer.laguna__footer > h2 {
+  text-align: center;
+  width: 100%;
+}
+footer.laguna__footer > nav {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+@media only screen and (min-width: 630px) {
+  footer.laguna__footer > nav {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+/*Single pages*/
+body.laguna__singlepage main.laguna__main {
+  padding: 0;
+  margin-bottom: 0;
+}
+@media screen and (min-width: 992px) {
+  body.laguna__singlepage main.laguna__main {
+    padding: 0 4rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .laguna__single {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .laguna__single__clip {
+    overflow: hidden;
+    height: calc(96vh - 20px);
+    width: calc(100vw - 110px);
+  }
+}
+
+.laguna__single .laguna__single__clip_content {
+  width: 100%;
+  flex-direction: column;
+}
+@media screen and (min-width: 992px) {
+  .laguna__single .laguna__single__clip_content {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    overflow-x: scroll;
+    width: 100%;
+    flex-direction: row;
+    height: calc(96vh - 100px);
+  }
+}
+
+.laguna__single .laguna__single__desktop {
+  display: none;
+}
+@media screen and (min-width: 992px) {
+  .laguna__single .laguna__single__desktop {
+    display: flex;
+  }
+}
+.laguna__single .laguna__single__mobile {
+  display: flex;
+}
+@media screen and (min-width: 992px) {
+  .laguna__single .laguna__single__mobile {
+    display: none;
+  }
+}
+
+footer.laguna__single__footer #laguna__button__info {
+  padding: 0.5rem 1.5rem;
+  letter-spacing: 0.25rem;
+  text-transform: none;
+}
+footer.laguna__single__footer button.laguna__button__light {
+  border-radius: 0;
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+}
+@media screen and (min-width: 992px) {
+  footer.laguna__single__footer button.laguna__button__light {
+    position: initial;
+    bottom: unset;
+    right: unset;
+  }
+}
+@media screen and (min-width: 992px) {
+  footer.laguna__single__footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+  }
+}
+footer.laguna__single__footer > .laguna_projects_singlepage_details {
+  display: none;
+}
+@media screen and (min-width: 992px) {
+  footer.laguna__single__footer > .laguna_projects_singlepage_details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+  }
+}
+footer.laguna__single__footer > .laguna_projects_singlepage_details .laguna__Projects__single__details__text__header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+footer.laguna__single__footer > .laguna_projects_singlepage_details .laguna__Projects__single__details__text__header > .laguna__Projects__single__details__category {
+  text-align: left;
+}
+@media only screen and (min-width: 630px) {
+  footer.laguna__single__footer > .laguna_projects_singlepage_details .laguna__Projects__single__details__text {
+    gap: 7rem;
+  }
+}
+@media only screen and (min-width: 630px) {
+  footer.laguna__single__footer > .laguna_projects_singlepage_details .laguna__projects__single__details__prototypes > .laguna__projects__single__details__prototypes_links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+@media only screen and (min-width: 630px) {
+  footer.laguna__single__footer > .laguna_projects_singlepage_details .laguna__projects__single__details__prototypes > .laguna__projects__single__details__prototypes_links dl {
+    display: flex;
+    flex-direction: row;
+    column-gap: 3rem;
+    margin: 0;
+    row-gap: 1rem;
+  }
+}
+@media only screen and (min-width: 630px) {
+  footer.laguna__single__footer > .laguna_projects_singlepage_details .laguna__projects__single__details__prototypes > .laguna__projects__single__details__prototypes_links dl dt {
+    font-size: 1.75rem;
+    font-weight: 300;
+  }
+}
+@media only screen and (min-width: 630px) {
+  footer.laguna__single__footer > .laguna_projects_singlepage_details .laguna__projects__single__details__prototypes > .laguna__projects__single__details__prototypes_links dl dd a {
+    font-size: 1.75rem;
+    display: flex;
+    gap: 0.5rem;
+    font-weight: 300;
+    text-decoration: none;
+  }
+}
+@media only screen and (min-width: 630px) {
+  footer.laguna__single__footer > .laguna_projects_singlepage_details .laguna__projects__single__details__prototypes {
+    display: flex;
+    flex-direction: row;
+    font-size: 2rem;
+    gap: 1rem;
+  }
+}
+footer.laguna__single__footer .laguna__footer__next-and-prev {
+  display: flex;
+  flex-direction: row;
+}
+footer.laguna__single__footer .laguna__footer__next-and-prev > button:nth-child(2) {
+  margin-left: -1px;
+}
+footer.laguna__single__footer .laguna__footer__next-and-prev .laguna__button__next-prev {
+  padding: 0.6em 1em;
+  text-transform: none;
+  border: 0;
+  letter-spacing: 3px;
+}
+
+.laguna__overlay_BG[data-overlay=hi] > .laguna__overlay {
+  width: 100vw;
+  max-width: 100vw;
+  height: auto;
+  max-height: calc(100% - 12rem);
+  bottom: 0;
+  left: unset;
+  overflow-y: initial;
+}
+@media only screen and (min-width: 630px) {
+  .laguna__overlay_BG[data-overlay=hi] > .laguna__overlay {
+    width: 900px;
+    left: calc(50vw - 400px);
+    top: calc(50vh - 270px);
+    bottom: unset;
+  }
+}
+.laguna__overlay_BG[data-overlay=hi] > .laguna__overlay .laguna__bigTitle {
+  align-items: center;
+}
+.laguna__overlay_BG[data-overlay=hi] > .laguna__overlay .laguna__bigTitle h3 {
+  color: var(--laguna--theme-color);
+}
+.laguna__overlay_BG[data-overlay=hi] > .laguna__overlay .laguna--hi {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 2.5rem;
+  font-size: 2rem;
+}
+.laguna__overlay_BG[data-overlay=hi] > .laguna__overlay .laguna--hi .laguna--hi__img {
+  width: 18.75rem;
+}
+@media only screen and (min-width: 630px) {
+  .laguna__overlay_BG[data-overlay=hi] > .laguna__overlay .laguna--hi .laguna--hi__img {
+    width: 30%;
+  }
+}
+.laguna__overlay_BG[data-overlay=hi] > .laguna__overlay .laguna--hi .laguna--hi__img > img {
+  max-width: 100%;
+}
+.laguna__overlay_BG[data-overlay=hi] > .laguna__overlay .laguna--hi .laguna--hi__txt {
+  width: 100%;
+}
+@media only screen and (min-width: 630px) {
+  .laguna__overlay_BG[data-overlay=hi] > .laguna__overlay .laguna--hi .laguna--hi__txt {
+    width: 60%;
+  }
+}
+.laguna__overlay_BG[data-overlay=hi] > .laguna__overlay .laguna--hi .laguna--hi__txt > p {
+  line-height: 2.85rem;
+  font-size: 1.7rem;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+  letter-spacing: 0.1rem;
+}
+.laguna__overlay_BG[data-overlay=hi] > .laguna__overlay .laguna--hi .laguna--hi__txt > ul.laguna--hi__contact {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1.25rem 0;
+  margin: 0;
+  gap: 1rem;
+}
+@media only screen and (min-width: 630px) {
+  .laguna__overlay_BG[data-overlay=hi] > .laguna__overlay .laguna--hi .laguna--hi__txt > ul.laguna--hi__contact {
+    flex-wrap: initial;
+    gap: 2rem;
+    padding: 0.75rem 0;
+  }
+}
+.laguna__overlay_BG[data-overlay=hi] > .laguna__overlay .laguna--hi .laguna--hi__txt > ul.laguna--hi__contact > li {
+  list-style: none;
+}
+@media only screen and (min-width: 630px) {
+  .laguna__overlay_BG[data-overlay=hi] > .laguna__overlay .laguna--hi {
+    flex-direction: row;
+    gap: 4rem;
+  }
+}
+
+/*# sourceMappingURL=style.comp.css.map */
